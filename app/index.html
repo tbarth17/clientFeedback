@@ -34,7 +34,7 @@
           </ul>
         </div>
 
-          <h1 class='tools-title'>Mentor Tools</h1>
+          <h1 class='tools-title'>Client Tools</h1>
             <div class='content-container'>
               {{outlet}}
             </div>
@@ -81,6 +81,15 @@
         <h3>Do you have any comments of concerns about your mentor, your goals or the services provided to you?</h3>
           {{textarea value=serviceComment cols='30' rows='6' placeholder='Enter comments here.'}}
         <button {{action 'addFeedback'}}>Submit</button>
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='clientsView'>
+      {{#each}}
+
+        {{#link-to 'goals.view' this class='client-link'}}
+          {{name}}
+        {{/link-to}}
+      {{/each}}
     </script>
 
     <!-- build:js scripts/vendor.js -->

@@ -16,8 +16,9 @@ Feedback.EnterFeedbackController = Ember.Controller.extend({
 
   actions: {
     addFeedback: function() {
-      console.log(this);
       var report = this.store.createRecord('report', {
+        clientName: this.get('clientName'),
+        mentorName: this.get('mentorName'),
         serviceRating: this.get('serviceRating'),
         treatedFairly: this.get('treatedFairly'),
         bestInterest: this.get('bestInterest'),
@@ -26,6 +27,14 @@ Feedback.EnterFeedbackController = Ember.Controller.extend({
         serviceComment: this.get('serviceComment')
       });
       report.save();
+      this.set('clientName', '');
+      this.set('mentorName', '');
+      this.set('serviceRating', '');
+      this.set('treatedFairly', '');
+      this.set('bestInterest', '');
+      this.set('completeGoals', '');
+      this.set('completeDescription', '');
+      this.set('serviceComment', '');
     }
   }
 });
