@@ -24,11 +24,27 @@
   <body>
 
     <script type='text/x-handlebars' data-template-name='application'>
-      <h1>Feedback!</h1>
-        {{outlet}}
+    <header>
+      <img class='logo' src = '../images/POP-logo.png'/>
+    </header>
+      <div class='wrapper'>
+        <div class='sidebar'>
+          <ul class='sidebar-list'>
+            <li>{{#link-to 'enterFeedback'}}Enter feedback{{/link-to}}</li>
+          </ul>
+        </div>
+
+          <h1 class='tools-title'>Mentor Tools</h1>
+            <div class='content-container'>
+              {{outlet}}
+            </div>
+      </div>
     </script>
 
     <script type='text/x-handlebars' data-template-name='enterFeedback'>
+        <h2>Client Feedback</h2>
+        {{input type='text' value=clientName placeholder='Your name'}}
+        {{input type='text' value=mentorName placeholder='Your mentor\'s name'}}
       <h3>How do you rate the services you receive?</h3>
         {{view Ember.Select
           content=rateScale
