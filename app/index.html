@@ -1,0 +1,90 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>clientFeedback</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+
+    <script type='text/x-handlebars' data-template-name='application'>
+      <h1>Feedback!</h1>
+        {{outlet}}
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='enterFeedback'>
+      <h3>How do you rate the services you receive?</h3>
+        {{view Ember.Select
+          content=rateScale
+          optionValuePath='content.value'
+          optionLabelPath='content.label'
+          value=serviceRating
+          prompt='Select rating'
+          }}
+        <h3>Do you feel that you were treated fairly by your mentor?</h3>
+          {{view Ember.Select
+            content=yesNo
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            value=treatedFairly
+            prompt='Yes/No'
+            }}
+        <h3>Do you feel that your mentor has your best interest at heart?</h3>
+          {{view Ember.Select
+            content=yesNo
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            value=bestInterest
+            prompt='Yes/No'
+            }}
+        <h3>Do you feel that you can complete the goals presented to you?</h3>
+          {{view Ember.Select
+            content=yesNo
+            optionValuePath='content.value'
+            optionLabelPath='content.label'
+            value=completeGoals
+            prompt='Yes/No'
+            }}
+          {{textarea value=completeDescription cols='30' rows='6' placeholder='If not why?'}}
+        <h3>Do you have any comments of concerns about your mentor, your goals or the services provided to you?</h3>
+          {{textarea value=serviceComment cols='30' rows='6' placeholder='Enter comments here.'}}
+        <button {{action 'addFeedback'}}>Submit</button>
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/firebase/firebase.js"></script>
+    <script src="../bower_components/handlebars/handlebars.js"></script>
+    <script src="../bower_components/ember/ember.js"></script>
+    <script src="../bower_components/ember-data/index.js"></script>
+    <script src="../bower_components/emberfire/dist/emberfire.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+        <script src="js/application.js"></script>
+        <script src="js/router.js"></script>
+        <script src="models/report.js"></script>
+        <script src="controllers/enter_feedback_controller.js"></script>
+
+        <!-- endbuild -->
+</body>
+</html>
