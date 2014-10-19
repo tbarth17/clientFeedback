@@ -25,13 +25,14 @@
 
     <script type='text/x-handlebars' data-template-name='application'>
     <header>
-      <img class='logo' src = '../images/POP-logo.png'/>
+      <img class='logo' src = '../images/nodropwhitefinal.png'/>
     </header>
       <div class='wrapper'>
         <div class='sidebar'>
           <ul class='sidebar-list'>
             <li>{{#link-to 'enterFeedback'}}Enter feedback{{/link-to}}</li>
             <li>{{#link-to 'clientsView'}}View mentors{{/link-to}}</li>
+
           </ul>
         </div>
 
@@ -44,9 +45,9 @@
 
     <script type='text/x-handlebars' data-template-name='enterFeedback'>
         <h2>Client Feedback</h2>
-        {{input type='text' value=clientName placeholder='Your name'}}
-        {{input type='text' value=mentorName placeholder='Your mentor\'s name'}}
-      <h3>How do you rate the services you receive?</h3>
+        {{input class='text' type='text' value=clientName placeholder='Your name'}}
+        {{input class='text' type='text' value=mentorName placeholder='Your mentor\'s name'}}
+      <h3 class='question'>How do you rate the services you receive?</h3>
         {{view Ember.Select
           content=rateScale
           optionValuePath='content.value'
@@ -54,7 +55,7 @@
           value=serviceRating
           prompt='Select rating'
           }}
-        <h3>Do you feel that you were treated fairly by your mentor?</h3>
+        <h3 class='question'>Do you feel that you were treated fairly by your mentor?</h3>
           {{view Ember.Select
             content=yesNo
             optionValuePath='content.value'
@@ -62,7 +63,7 @@
             value=treatedFairly
             prompt='Yes/No'
             }}
-        <h3>Do you feel that your mentor has your best interest at heart?</h3>
+        <h3 class='question'>Do you feel that your mentor has your best interest at heart?</h3>
           {{view Ember.Select
             content=yesNo
             optionValuePath='content.value'
@@ -70,7 +71,7 @@
             value=bestInterest
             prompt='Yes/No'
             }}
-        <h3>Do you feel that you can complete the goals presented to you?</h3>
+        <h3 class='question'>Do you feel that you can complete the goals presented to you?</h3>
           {{view Ember.Select
             content=yesNo
             optionValuePath='content.value'
@@ -81,7 +82,8 @@
           {{textarea value=completeDescription cols='30' rows='6' placeholder='If not why?'}}
         <h3>Do you have any comments or concerns about your mentor, your goals or the services provided to you?</h3>
           {{textarea value=serviceComment cols='30' rows='6' placeholder='Enter comments here.'}}
-        <button {{action 'addFeedback'}}>Submit</button>
+        <button {{action class='anotherbutton' 'addFeedback'}}>Submit</button>
+
     </script>
 
     <script type='text/x-handlebars' data-template-name='clientsView'>
