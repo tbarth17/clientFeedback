@@ -31,6 +31,7 @@
         <div class='sidebar'>
           <ul class='sidebar-list'>
             <li>{{#link-to 'enterFeedback'}}Enter feedback{{/link-to}}</li>
+            <li>{{#link-to 'clientsView'}}View mentors{{/link-to}}</li>
           </ul>
         </div>
 
@@ -78,7 +79,7 @@
             prompt='Yes/No'
             }}
           {{textarea value=completeDescription cols='30' rows='6' placeholder='If not why?'}}
-        <h3>Do you have any comments of concerns about your mentor, your goals or the services provided to you?</h3>
+        <h3>Do you have any comments or concerns about your mentor, your goals or the services provided to you?</h3>
           {{textarea value=serviceComment cols='30' rows='6' placeholder='Enter comments here.'}}
         <button {{action 'addFeedback'}}>Submit</button>
     </script>
@@ -86,10 +87,28 @@
     <script type='text/x-handlebars' data-template-name='clientsView'>
       {{#each}}
 
-        {{#link-to 'goals.view' this class='client-link'}}
-          {{name}}
+        {{#link-to 'mentors.view' this}}
+          {{mentorName}}
         {{/link-to}}
       {{/each}}
+    </script>
+
+    <script type='text/x-handlebars' data-template-name='mentors/view'>
+      <h2>Feedback for {{model.mentorName}}</h2>
+      <h3>Client:</h3>
+        {{model.clientName}}
+      <h3>Service rating:</h3>
+        {{model.serviceRating}}/5
+      <h3>Does the client feel they were treated fairly?</h3>
+        {{model.treatedFairly}}
+      <h3>Does the client feel that the mentor has their best interest in mind?</h3>
+        {{model.bestInterest}}
+      <h3>Does the client feel empowered to complete their goals?</h3>
+        {{model.completeGoals}}
+      <h4>Why do they feel this way?</h4>
+        {{model.completeDescription}}
+      <h3>Comments and concerns about the mentor, goals or the services provided</h3>
+        {{model.serviceComment}}
     </script>
 
     <!-- build:js scripts/vendor.js -->
