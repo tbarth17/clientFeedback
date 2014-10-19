@@ -45,7 +45,7 @@
         <h2>Client Feedback</h2>
         {{input class='text' type='text' value=clientName placeholder='Your name'}}
         {{input class='text' type='text' value=mentorName placeholder='Your mentor\'s name'}}
-      <h3 class='question'>How do you rate the services you receive?</h3>
+      <h3 class='question'>How do you rate the services you receive? (1 = Poor and 5 = Great)</h3>
         {{view Ember.Select
           content=rateScale
           optionValuePath='content.value'
