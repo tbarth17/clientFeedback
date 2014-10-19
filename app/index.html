@@ -30,8 +30,8 @@
       <div class='wrapper'>
         <div class='sidebar'>
           <ul class='sidebar-list'>
-            <li>{{#link-to 'enterFeedback'}}Enter feedback{{/link-to}}</li>
-            <li>{{#link-to 'clientsView'}}View mentors{{/link-to}}</li>
+            <li>{{#link-to 'enterFeedback'}}Enter Feedback{{/link-to}}</li>
+            <li>{{#link-to 'clientsView'}}View Mentors{{/link-to}}</li>
 
           </ul>
         </div>
@@ -45,6 +45,7 @@
 
     <script type='text/x-handlebars' data-template-name='enterFeedback'>
         <h2>Client Feedback</h2>
+        <div class='feedbackwrapper'>
         {{input class='text' type='text' value=clientName placeholder='Your name'}}
         {{input class='text' type='text' value=mentorName placeholder='Your mentor\'s name'}}
       <h3 class='question'>How do you rate the services you receive? (1 = Poor and 5 = Great)</h3>
@@ -82,35 +83,39 @@
           {{textarea value=completeDescription cols='30' rows='6' placeholder='If not why?'}}
         <h3>Do you have any comments or concerns about your mentor, your goals or the services provided to you?</h3>
           {{textarea value=serviceComment cols='30' rows='6' placeholder='Enter comments here.'}}
-        <button {{action 'addFeedback' class='anotherbutton'}}>Submit</button>
-
+        <button class="anotherbutton" {{action 'addFeedback' class='anotherbutton'}}>Submit</button>
+      </div>
     </script>
 
     <script type='text/x-handlebars' data-template-name='clientsView'>
+    <div class='mentorlinks'
       {{#each}}
 
         {{#link-to 'mentors.view' this}}
           {{mentorName}}
         {{/link-to}}
       {{/each}}
+    </div>
     </script>
 
     <script type='text/x-handlebars' data-template-name='mentors/view'>
       <h2>Feedback for {{model.mentorName}}</h2>
+      <div class='feedbackwrapper'>
       <h3>Client:</h3>
-        {{model.clientName}}
+      <p>{{model.clientName}}</p>
       <h3>Service rating:</h3>
-        {{model.serviceRating}}/5
+      <p>{{model.serviceRating}}/5</p>
       <h3>Does the client feel they were treated fairly?</h3>
-        {{model.treatedFairly}}
+        <p>{{model.treatedFairly}}</p>
       <h3>Does the client feel that the mentor has their best interest in mind?</h3>
-        {{model.bestInterest}}
+        <p>{{model.bestInterest}}</p>
       <h3>Does the client feel empowered to complete their goals?</h3>
-        {{model.completeGoals}}
+        <p>{{model.completeGoals}}</p>
       <h4>Why do they feel this way?</h4>
-        {{model.completeDescription}}
+        <p>{{model.completeDescription}}</p>
       <h3>Comments and concerns about the mentor, goals or the services provided</h3>
-        {{model.serviceComment}}
+        <p>{{model.serviceComment}}</p>
+      </div>
     </script>
 
     <!-- build:js scripts/vendor.js -->
